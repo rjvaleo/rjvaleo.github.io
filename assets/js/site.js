@@ -165,6 +165,19 @@
   var pr = $('#print');
   if (pr) pr.onclick = function () { window.print(); };
 
+  // ---------- films: the poster becomes the YouTube player when clicked (nothing loads from YouTube's player before that)
+  Array.prototype.forEach.call(document.querySelectorAll('a.yt'), function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.getAttribute('data-yt') + '?autoplay=1&rel=0';
+      f.title = a.getAttribute('aria-label').replace(/^Play /, '');
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true;
+      f.className = 'yt'; a.parentNode.replaceChild(f, a);
+    });
+  });
+
   // ---------- case pages: you arrive inside the project's world
   // A star field in the project's colour sits behind the page. Coming in from the map it starts at
   // full warp and slows to a drift as the page settles around you.
