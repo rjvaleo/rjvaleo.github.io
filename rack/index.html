@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>prism-fx rack</title>
+<meta name="description" content="101 audio effects from one Rust library, running in your browser as WebAssembly. Play one of twelve built-in sounds, your own file or your microphone through any chain of them.">
+<meta name="theme-color" content="#0a0b0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0b0a'/%3E%3Cpath d='M6 22 L12 10 L18 18 L22 12 L26 22' fill='none' stroke='%237ce386' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="rack.css">
+</head>
+<body>
+<a class="skip" href="#rack">Skip to the rack</a>
+<header class="top">
+  <div class="brand"><b>prism-fx</b> <span>rack</span></div>
+  <p class="lede"><b id="count">101</b> audio effects from one Rust library, running in your browser as WebAssembly. The same code runs inside Audio Edit &amp; Tag and idMLab.</p>
+  <a class="back" id="back" href="https://github.com/rjvaleo/hyper-efx">Source on GitHub</a>
+</header>
+
+<section class="bar" aria-label="Transport">
+  <button class="play" id="play" type="button">Play</button>
+  <div class="seg" role="group" aria-label="Sound source">
+    <button type="button" data-src="kit" class="on">Sounds</button>
+    <button type="button" data-src="file" id="src-file">Your file</button>
+    <button type="button" data-src="mic">Microphone</button>
+  </div>
+  <input type="file" id="file" accept="audio/*" hidden>
+  <label class="kit" for="sound"><span>Sound</span><select id="sound"></select></label>
+  <button class="pill" id="bypass" type="button" aria-pressed="false">Bypass</button>
+  <label class="vol" for="vol">Volume <input type="range" id="vol" min="0" max="1.2" step="0.01" value="0.8"></label>
+  <div class="meter" role="img" aria-label="Output level, left and right"><i></i><i></i></div>
+  <canvas id="scope" aria-label="Output spectrum"></canvas>
+  <p class="chain" id="chain" aria-live="polite"></p>
+  <p class="note" id="note" role="status"></p>
+</section>
+
+<main class="main">
+  <aside class="browser" aria-label="Effects">
+    <div class="bhead"><h2>Effects</h2><span id="shown"></span></div>
+    <input id="q" type="search" placeholder="Search: chorus, plate, Lexicon…" aria-label="Search effects" autocomplete="off">
+    <div class="cats" id="cats"></div>
+    <ul class="list" id="list"></ul>
+  </aside>
+  <section class="rackwrap">
+    <div class="rhead"><h2>Chain</h2><p>Runs top to bottom. Drag on a pad to move two controls at once. Double-click a slider to reset it.</p><button class="pill" id="clear" type="button">Clear</button></div>
+    <div id="rack" class="rack"></div>
+  </section>
+</main>
+<p class="foot">Every effect is written once in Rust, tested against one contract, and compiled to WebAssembly here. Drop an audio file anywhere on the page to play it through the chain.</p>
+<script src="sounds.js"></script>
+<script src="rack.js" type="module"></script>
+</body>
+</html>
