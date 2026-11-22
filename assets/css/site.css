@@ -319,3 +319,17 @@ a.more{color:var(--acc);white-space:nowrap}a.more:hover{text-decoration:underlin
  .timeline li b,.timeline.cv li b{font-size:12.5px}.timeline li p{font-size:11.5px;line-height:1.35;color:#111}
  .reveal{opacity:1!important;transform:none!important;animation:none!important}
 }
+
+/* home headline: "I love" stays, the two endings fade in turn */
+.htxt h1 .rot{display:grid}
+.htxt h1 .rot>span{grid-area:1/1;opacity:0;animation:rot 9s infinite}
+.htxt h1 .rot>span+span{animation-delay:4.5s}
+@keyframes rot{0%{opacity:0}7%{opacity:1}43%{opacity:1}50%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.htxt h1 .rot>span{grid-area:auto;opacity:1}}
+/* home: one row of brand marks where the statistics were */
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:46px}
+.brandrow a{display:flex;align-items:center;opacity:.78;transition:opacity .2s}
+.brandrow a:hover,.brandrow a:focus-visible{opacity:1}
+.brandrow img{display:block;height:30px;width:auto;max-width:150px;object-fit:contain}
+.brandrow b{font-family:BG,IT,sans-serif;font-weight:700;font-size:19px;letter-spacing:-.03em;font-stretch:88%;white-space:nowrap}
+@media (max-width:900px){.brandrow{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 16px;justify-items:center}.brandrow img{height:24px;max-width:100%}.brandrow b{font-size:14px;white-space:normal;text-align:center;line-height:1.1}}
