@@ -213,3 +213,5 @@
     requestAnimationFrame(tick);
   }
 })();
+
+;(function(){var b=document.querySelector(".theme-sw");if(!b)return;b.addEventListener("click",function(){var r=document.documentElement,t=r.dataset.theme==="light"?"dark":"light";r.dataset.theme=t;try{localStorage.setItem("theme",t)}catch(e){}var m=document.querySelector("meta[name=theme-color]");if(m)m.content=t==="light"?"#f7f6f2":"#0a0a0c";});})();
