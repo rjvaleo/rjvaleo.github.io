@@ -491,3 +491,14 @@ button.rx-card:hover .go{background:var(--acc);color:#0a0a0c}
 @media (max-width:760px){.rx-acc .why{font-size:0;padding:6px}.rx-acc .why .chev{width:18px;height:18px}.rx-pnav small{display:none}}
 @media (prefers-reduced-motion:reduce){.rx-hint .ic,.touring .on rect{animation:none}}
 .rx-tabs [role=tab] .n+.ic{display:none}.rx-tabs{gap:4px}.rx-tabs [role=tab]{padding:10px 14px}
+.rx-items .solo{color:#dcdbd5;font-size:17.5px;margin-top:0}
+.rx-card>span:only-of-type{color:#dcdbd5}
+.rx-gal .main{margin:0;border-radius:16px;overflow:hidden;background:var(--surf);box-shadow:inset 0 0 0 1px var(--line);padding:14px}
+.rx-gal .main img{width:100%;max-height:68vh;object-fit:contain;display:block;border-radius:10px;background:#0e0e12}
+.rx-gal .main figcaption{font-size:15px;color:#c9c8c2;margin-top:12px;min-height:1.4em}
+.rx-gal .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
+.rx-gal .thumbs button{border:0;padding:0;border-radius:10px;overflow:hidden;cursor:pointer;background:var(--surf);box-shadow:inset 0 0 0 1px var(--line);opacity:.6;transition:opacity .15s,box-shadow .15s}
+.rx-gal .thumbs button:hover{opacity:1}
+.rx-gal .thumbs button[aria-pressed=true]{opacity:1;box-shadow:0 0 0 2px var(--acc)}
+.rx-gal .thumbs img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.rx-panel .demo,.rx-panel .films{margin-top:0}

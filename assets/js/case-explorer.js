@@ -18,6 +18,7 @@
     });
     if (!found) return false;
     panels.forEach(function (p) { p.hidden = p.id !== 'p-' + key; });
+    window.dispatchEvent(new Event('resize'));  // canvases inside a panel size themselves when it shows
     if (typeof tours !== 'undefined' && tours[key] && tours[key].tour) tours[key].tour();
     if (key === 'problem' && typeof flipOnce === 'function') flipOnce();
     if (history.replaceState) history.replaceState(null, '', '#' + key);
@@ -103,4 +104,17 @@
   }
   var cur = rx.querySelector('[role=tab][aria-selected=true]');
   if (cur) { var k = cur.id.slice(4); if (k === 'problem') flipOnce(); else if (tours[k] && tours[k].tour) tours[k].tour(); }
+
+  // Picture viewer: thumbnails swap the main picture.
+  [].slice.call(rx.querySelectorAll('.rx-gal')).forEach(function (g) {
+    var img = g.querySelector('.main img'), cap = g.querySelector('.main figcaption');
+    var btns = [].slice.call(g.querySelectorAll('.thumbs button'));
+    btns.forEach(function (b, i) {
+      b.setAttribute('aria-label', 'Show picture ' + (i + 1) + (b.dataset.cap ? ': ' + b.dataset.cap : ''));
+      b.addEventListener('click', function () {
+        img.src = b.dataset.src; img.alt = b.dataset.alt; cap.textContent = b.dataset.cap;
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      });
+    });
+  });
 })();
