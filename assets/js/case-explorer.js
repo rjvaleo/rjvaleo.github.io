@@ -65,7 +65,11 @@
   }
   var pickArch = picker('.rx-arch', '.ab', '.rx-archwrap .rx-detail');
   var pickLoop = picker('.rx-loop', '.lb', '.loopd');
-  var tours = { architecture: pickArch, ai: pickLoop };
+  var tours = {};  // panel key -> the diagram that tours when that panel first opens
+  [[pickArch, '.rx-arch'], [pickLoop, '.rx-loop']].forEach(function (x) {
+    var el = x[0] && rx.querySelector(x[1]), p = el && el.closest('[role=tabpanel]');
+    if (p) tours[p.id.slice(2)] = x[0];
+  });
 
   // Cards that point into the architecture.
   [].slice.call(rx.querySelectorAll('[data-goto]')).forEach(function (b) {
