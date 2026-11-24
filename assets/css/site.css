@@ -502,3 +502,9 @@ button.rx-card:hover .go{background:var(--acc);color:#0a0a0c}
 .rx-gal .thumbs button[aria-pressed=true]{opacity:1;box-shadow:0 0 0 2px var(--acc)}
 .rx-gal .thumbs img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
 .rx-panel .demo,.rx-panel .films{margin-top:0}
+.rx-flow .rx-arch{margin-bottom:18px}
+.rx-flow .rx-arch text{text-anchor:middle}
+.rx-arch .ab.gate polygon{fill:rgba(143,157,255,.12);stroke:rgba(143,157,255,.65);stroke-width:1.2;transition:fill .15s}
+.rx-arch .ab.gate.on polygon{fill:var(--acc);stroke:var(--acc)}
+.rx-arch .ab.gate text{font-size:12.5px}
+.rx-archwrap.one{grid-template-columns:1fr}
