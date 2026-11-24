@@ -508,3 +508,4 @@ button.rx-card:hover .go{background:var(--acc);color:#0a0a0c}
 .rx-arch .ab.gate.on polygon{fill:var(--acc);stroke:var(--acc)}
 .rx-arch .ab.gate text{font-size:12.5px}
 .rx-archwrap.one{grid-template-columns:1fr}
+.rx-flow .rx-arch .ab text{font-size:12.5px}
